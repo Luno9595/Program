@@ -10,6 +10,11 @@ def get_disk():
 def get_swap():
     result = subprocess.run(["swapon", "-s"], capture_output=True, text=True)
     print(result.stdout)
+
+def get_memory():
+    memory = psutil.virtual_memory()
+    print(f"Used RAM: {memory.used / (1024 ** 3):.2f} GB")
         
-get_swap_info()
+get_memory()
+get_swap()
 get_disk()

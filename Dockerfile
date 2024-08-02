@@ -1,3 +1,6 @@
 FROM python:latest
 
-CMD python ./program.py
+RUN pip install psutil
+
+COPY program.py /app/program.py
+CMD ["python", "/app/program.py"]

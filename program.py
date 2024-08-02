@@ -14,7 +14,14 @@ def get_swap():
 def get_memory():
     memory = psutil.virtual_memory()
     print(f"Used RAM: {memory.used / (1024 ** 3):.2f} GB")
-        
-get_memory()
-get_swap()
+    
+def get_processes():
+    processes = psutil.process_iter(attrs=["pid", "name"])
+    print("Running processes:")
+    for process in processes:
+        print(f"PID: {process.info['pid']}, Name: {process.info['name']}")
+    
 get_disk()
+get_swap()
+get_memory()
+get_processes()
